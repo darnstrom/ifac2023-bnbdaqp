@@ -1,0 +1,6 @@
+[deps]
+DAQP = "c47d62df-3981-49c8-9651-128b1cd08617"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+LinearMPC = "82e1c212-e1a2-49d2-b26a-a31d6968e3bd"
+MatrixEquations = "99c1a7ee-ab34-5fd5-8076-27c950a045f4"
+UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
