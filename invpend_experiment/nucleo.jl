@@ -1,7 +1,25 @@
 ## Connect to Nucleo
 using LibSerialPort
 nucleo = LibSerialPort.open("/dev/ttyACM0",115200) 
+set_flow_control(nucleo; xonxoff = SP_XONXOFF_DISABLED, dtr = SP_DTR_OFF, rts = SP_RTS_OFF)
+get_port_settings(nucleo)
 #close(nucleo)
+## Define simulation model 
+function invpend_step(F,G,x,u;κ=100,ν=10,d=0.5,l=1,Nsteps=10)
+    for i = 1:Nsteps
+        δ = -x[1]+l*x[2]-d
+        δdot =  -x[3]+l*x[4]
+        if(δ >= 0 && κ*δ+ν*δdot>=0)
+            u2 = κ*δ+ν*δdot
+        else
+            u2 = 0
+        end
+        x = F*x + G[:,1:2]*[u[1]; u2]
+        println(" $u2 & $(u[2])")
+        #readline()
+    end
+    return x
+end
 ## Initialize
 data = read(nucleo)
 u = zeros(4);
@@ -14,26 +32,20 @@ n_iters = zeros(Nsteps);
 us = zeros(mpc.nu,Nsteps)
 xs = zeros(mpc.nx,Nsteps)
 ## Step on Nucleo
-check = 0
 Fsim,Gsim = LinearMPC.zoh(A,B,Ts/2);
 for k = 1:Nsteps
     xs[:,k] = x;
     display(k)
-    write(nucleo,Cfloat.([x;0]));
+    write(nucleo,Cfloat.(x));
+    flush(nucleo)
     #write(nucleo,Cfloat.(x));
     #raw_data=read(nucleo)
     wait_count = 0
-    while (bytesavailable(nucleo) < 36)
-        if(wait_count > 10)
-            println("trying to resend!")
-            data_flush = read(nucleo)
-            write(nucleo,Cfloat.([x.+1e-4;0]));
-            wait_count = 0
-        end
-        sleep(0.25)
+    while (bytesavailable(nucleo) < 32)
         wait_count +=1
+        @assert(wait_count < 20)
+        sleep(0.1)
     end
-    check = read(nucleo,Cfloat);
     for i = 1:4
         u[i] = read(nucleo,Cfloat)
     end
@@ -46,9 +58,9 @@ for k = 1:Nsteps
 
     # step
     #x = mpc.F*x+mpc.G*u
-    x = LinearMPC.invpend_step(F,G,x,u;Nsteps=1)
+    x = invpend_step(F,G,x,u;Nsteps=1)
     if(k==20)
-        x[3] = -0.75
+        x[3] = -0.7
     end
 #    sleep(0.25)
 end

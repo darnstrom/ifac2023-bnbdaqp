@@ -1,0 +1,4 @@
+../Core/Src/daqp.c:3:5:daqp_ldp	40	static
+../Core/Src/daqp.c:65:6:ldp2qp_solution	20	static
+../Core/Src/daqp.c:88:6:warmstart_workspace	24	static
+../Core/Src/daqp.c:103:6:reset_daqp_workspace	0	static

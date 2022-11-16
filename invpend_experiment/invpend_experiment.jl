@@ -95,11 +95,11 @@ mpLDP = LinearMPC.dualize(mpQP,1)
 
 ## Simulate
 Nsim = 50 
-x0 = [0.0, 0*pi/180, -1, 0.0]; 
+x0 = [0.0, 0*pi/180, -1, 0.0];
 
 function invpend_impulse(x,u,k)
     if(k==20)
-        x[3] = -0.75 
+        x[3] = -0.7
     end
 end
 mpc.settings.solver_opts =  Dict(:iter_limit=>1e4,
@@ -116,4 +116,8 @@ opts = Dict(:zero_tol => 1e-7,
             :dual_tol => 1e-4,
             :cycle_tol => 25,
             :iter_limit => 1e4)
-LinearMPC.codegen(mpc,opt_settings=opts,dir="codegen/")
+LinearMPC.codegen(mpc,opt_settings=opts);
+cp("mpc_workspace.c","bnb_invpend_STM32F11RE/Core/Src/mpc_workspace.c");
+cp("mpc_workspace.h","bnb_invpend_STM32F11RE/Core/Inc/mpc_workspace.h");
+rm("mpc_workspace.c");
+rm("mpc_workspace.h");

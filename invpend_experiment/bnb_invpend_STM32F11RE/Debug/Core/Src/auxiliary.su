@@ -1,0 +1,11 @@
+../Core/Src/auxiliary.c:40:6:compute_primal_and_fval	48	static
+../Core/Src/auxiliary.c:267:6:compute_CSP	56	static
+../Core/Src/auxiliary.c:310:6:compute_singular_direction	48	static
+../Core/Src/auxiliary.c:332:6:reorder_LDL	28	static
+../Core/Src/auxiliary.c:360:6:pivot_last	32	static
+../Core/Src/auxiliary.c:3:6:remove_constraint	24	static
+../Core/Src/auxiliary.c:230:5:remove_blocking	16	static
+../Core/Src/auxiliary.c:21:6:add_constraint	32	static
+../Core/Src/auxiliary.c:81:5:add_infeasible	40	static
+../Core/Src/auxiliary.c:380:5:activate_constraints	32	static
+../Core/Src/auxiliary.c:414:6:deactivate_constraints	12	static
