@@ -36,12 +36,12 @@ for nrun = 1:nruns
 	sense = int32(zeros(m+ms,1));
 	sense(1:ms) = sense(1:ms)+16;
     d = daqp();
-    d.setup(H,f,A,bupper_tot,blower_tot,sense);
+    [~,setup_time] = d.setup(H,f,A,bupper_tot,blower_tot,sense);
     d.settings('iter_limit',1e4);
 	[xstar,fval,exitflag,info] = d.solve();
 	%[xstar,fval,exitflag,info] = daqp.quadprog(H,f,A,bupper_tot,blower_tot,sense);
 	fval = 0.5*xstar'*H*xstar+f'*xstar;
-	times(i_dim,nrun,1)=info.solve_time;
+	times(i_dim,nrun,1)=setup_time+info.solve_time;
 	iters(i_dim,nrun,1)=info.iter;
 	nodes(i_dim,nrun,1)=info.nodes;
 	flags(i_dim,nrun,1)=exitflag;
