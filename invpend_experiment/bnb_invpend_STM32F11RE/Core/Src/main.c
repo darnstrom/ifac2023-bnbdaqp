@@ -100,10 +100,10 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start(&htim10);
+  HAL_UART_Receive_DMA(&huart2,(uint8_t *)RxData,sizeof(float)*(N_THETA));
   /* USER CODE END 2 */
 
-  HAL_UART_Receive_DMA(&huart2,(uint8_t *)RxData,sizeof(float)*(N_THETA));
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

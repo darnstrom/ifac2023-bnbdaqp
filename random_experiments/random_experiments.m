@@ -1,6 +1,7 @@
 %% Init
 % Add path to DIR/daqp/interfaces/daqp-matlab/
 % where dir is the save path to daqp
+addpath ~/Projects/Research/code/daqp/interfaces/daqp-matlab/
 %% Run random examples 
 rng(1);
 dims = 2:2:40;

@@ -37,9 +37,6 @@ for k = 1:Nsteps
     xs[:,k] = x;
     display(k)
     write(nucleo,Cfloat.(x));
-    flush(nucleo)
-    #write(nucleo,Cfloat.(x));
-    #raw_data=read(nucleo)
     wait_count = 0
     while (bytesavailable(nucleo) < 32)
         wait_count +=1
@@ -57,18 +54,16 @@ for k = 1:Nsteps
     @assert(exitflags[k]==1)
 
     # step
-    #x = mpc.F*x+mpc.G*u
     x = invpend_step(F,G,x,u;Nsteps=1)
     if(k==20)
         x[3] = -0.7
     end
-#    sleep(0.25)
 end
 
 ## Write to file 
 using DelimitedFiles
 open("result.dat"; write=true) do f
-  write(f, "step time u1 u2 u3 u4 x1 x2 x3 x4 delta\n")
-  writedlm(f, [collect(1:Nsteps) cycles/1e2*2 us' xs' delta])
+  write(f, "step time u1 u2 u3 u4 x1 x2 x3 x4\n")
+  writedlm(f, [collect(1:Nsteps) cycles/1e3*2 us' xs'])
 end
 
