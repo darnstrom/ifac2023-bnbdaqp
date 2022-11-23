@@ -111,17 +111,15 @@ version = "4.1.1"
 
 [[deps.DAQP]]
 deps = ["DAQP_jll", "LinearAlgebra", "MathOptInterface"]
-git-tree-sha1 = "fc48d41cc906586c93db2422b59b787404f2e498"
-repo-rev = "codegen-local"
-repo-url = "/home/daniel/Projects/Research/code/Julia/DAQP.jl"
+git-tree-sha1 = "a021bcfc6f782dd6595621d09344c13202018184"
 uuid = "c47d62df-3981-49c8-9651-128b1cd08617"
-version = "0.3.2"
+version = "0.4.0"
 
 [[deps.DAQP_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "3c32ef6e8d9a8095d87785b7ff2773023b434123"
+git-tree-sha1 = "e3b398f271bed415898f3a75fd49a9bef1caf08c"
 uuid = "5c51c916-43bf-57fe-9d62-13064ebbf40d"
-version = "0.3.1+0"
+version = "0.4.0+0"
 
 [[deps.DataAPI]]
 git-tree-sha1 = "e08915633fcb3ea83bf9d6126292e5bc5c739922"
@@ -146,9 +144,9 @@ version = "1.1.0"
 
 [[deps.DiffRules]]
 deps = ["IrrationalConstants", "LogExpFunctions", "NaNMath", "Random", "SpecialFunctions"]
-git-tree-sha1 = "9a95659c283c9018ea99e017aa9e13b7e89fadd2"
+git-tree-sha1 = "c5b6685d53f933c11404a3ae9822afe30d522494"
 uuid = "b552c78f-8df3-52c6-915a-8e097449b14b"
-version = "1.12.1"
+version = "1.12.2"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
@@ -190,12 +188,6 @@ git-tree-sha1 = "87eb71354d8ec1a96d4a7636bd57a7347dde3ef9"
 uuid = "d7e528f0-a631-5988-bf34-fe36492bcfd7"
 version = "2.10.4+0"
 
-[[deps.Gurobi]]
-deps = ["Libdl", "MathOptInterface", "Pkg"]
-git-tree-sha1 = "87c018cbd2fd33e6d2462d486abee53a27c91c91"
-uuid = "2e9cd046-0924-5485-92f1-d5272153d98b"
-version = "0.11.3"
-
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
@@ -222,12 +214,6 @@ deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "3c837543ddb02250ef42f4738347454f95079d4e"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.3"
-
-[[deps.JuMP]]
-deps = ["LinearAlgebra", "MathOptInterface", "MutableArithmetics", "OrderedCollections", "Printf", "SparseArrays"]
-git-tree-sha1 = "9a57156b97ed7821493c9c0a65f5b72710b38cf7"
-uuid = "4076af6c-e467-56ae-b986-b466b2749572"
-version = "1.4.0"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
@@ -259,8 +245,10 @@ deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.LinearMPC]]
-deps = ["DAQP", "Gurobi", "JuMP", "LinearAlgebra", "Pkg", "Printf", "UnicodePlots"]
-path = "/home/daniel/Projects/Research/code/Julia/LinearMPC.jl"
+deps = ["DAQP", "LinearAlgebra", "Pkg", "Printf"]
+git-tree-sha1 = "913363bfff00e655a1e1bcbf407dd468fbd526c7"
+repo-rev = "main"
+repo-url = "https://github.com/darnstrom/LinearMPC.jl"
 uuid = "82e1c212-e1a2-49d2-b26a-a31d6968e3bd"
 version = "0.1.0"
 
@@ -297,9 +285,9 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 
 [[deps.MathOptInterface]]
 deps = ["BenchmarkTools", "CodecBzip2", "CodecZlib", "DataStructures", "ForwardDiff", "JSON", "LinearAlgebra", "MutableArithmetics", "NaNMath", "OrderedCollections", "Printf", "SparseArrays", "SpecialFunctions", "Test", "Unicode"]
-git-tree-sha1 = "ceed48edffe0325a6e9ea00ecf3607af5089c413"
+git-tree-sha1 = "192e86391e40d8006ef821a04403faa762e84ed4"
 uuid = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
-version = "1.9.0"
+version = "1.10.0"
 
 [[deps.MatrixEquations]]
 deps = ["LinearAlgebra", "LinearMaps"]
@@ -325,9 +313,9 @@ uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 
 [[deps.MutableArithmetics]]
 deps = ["LinearAlgebra", "SparseArrays", "Test"]
-git-tree-sha1 = "1d57a7dc42d563ad6b5e95d7a8aebd550e5162c0"
+git-tree-sha1 = "aa532179d4a643d4bd9f328589ca01fa20a0d197"
 uuid = "d8a4904e-b15c-11e9-3269-09a3773c0cb0"
-version = "1.0.5"
+version = "1.1.0"
 
 [[deps.NaNMath]]
 deps = ["OpenLibm_jll"]
@@ -359,9 +347,9 @@ version = "1.4.1"
 
 [[deps.Parsers]]
 deps = ["Dates", "SnoopPrecompile"]
-git-tree-sha1 = "cceb0257b662528ecdf0b4b4302eb00e767b38e7"
+git-tree-sha1 = "b64719e8b4504983c7fca6cc9db3ebc8acc2a4d6"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.5.0"
+version = "2.5.1"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]

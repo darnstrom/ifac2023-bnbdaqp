@@ -117,7 +117,7 @@ opts = Dict(:zero_tol => 1e-7,
             :cycle_tol => 25,
             :iter_limit => 1e4)
 LinearMPC.codegen(mpc,opt_settings=opts);
-cp("mpc_workspace.c","bnb_invpend_STM32F11RE/Core/Src/mpc_workspace.c");
-cp("mpc_workspace.h","bnb_invpend_STM32F11RE/Core/Inc/mpc_workspace.h");
+cp("mpc_workspace.c","bnb_invpend_STM32F11RE/Core/Src/mpc_workspace.c";force=true);
+cp("mpc_workspace.h","bnb_invpend_STM32F11RE/Core/Inc/mpc_workspace.h";force=true);
 rm("mpc_workspace.c");
 rm("mpc_workspace.h");
